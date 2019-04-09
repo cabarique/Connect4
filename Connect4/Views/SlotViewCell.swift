@@ -22,8 +22,7 @@ class SlotViewCell: UICollectionViewCell {
     
     var state: ChipType = .blank
     private var fillLayer: CAShapeLayer!
-    private var circlePath: UIBezierPath!
-    private var chipPath: UIBezierPath!
+    private var chipView: UIView!
     
     static func cellReuseIdentifier() -> String {
         return String(describing: self)
@@ -45,6 +44,12 @@ class SlotViewCell: UICollectionViewCell {
             $0.fillColor = config.backgroundColor.cgColor
             layer.addSublayer($0)
         }
+        
+        self.chipView = UIView(frame: .zero).then {
+            addSubview($0)
+            clipsToBounds = true
+            $0.backgroundColor = .clear
+        }
     }
     
     override func draw(_ rect: CGRect) {
@@ -53,14 +58,14 @@ class SlotViewCell: UICollectionViewCell {
         
         let radius = rect.size.width / 2 - config.padding
         let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height), cornerRadius: 0)
-        let circlePath = UIBezierPath(roundedRect: CGRect(x: config.padding, y: config.padding, width: 2 * radius, height: 2 * radius), cornerRadius: radius)
-        if(state != .blank) {
-            state.color().setFill()
-            circlePath.fill()
-        }
-        
+        let circleRect = CGRect(x: config.padding, y: config.padding, width: 2 * radius, height: 2 * radius)
+        let circlePath = UIBezierPath(roundedRect: circleRect, cornerRadius: radius)
         path.append(circlePath)
-        
         self.fillLayer.path = path.cgPath
+        
+        self.chipView.layer.cornerRadius = circleRect.size.width / 2
+        self.chipView.frame = circleRect
+        self.chipView.backgroundColor = state.color()
+        
     }
 }
