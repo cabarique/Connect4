@@ -103,6 +103,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="player1Label" destination="IWt-kz-j48" id="V1E-aX-AVR"/>
+                        <outlet property="player2Label" destination="HFc-8R-mV2" id="Akq-Us-6bR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,6 +15,10 @@
 		DA6FBCF3225C1A7000230560 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6FBCF1225C1A7000230560 /* LaunchScreen.storyboard */; };
 		DA6FBCFE225C1A7000230560 /* Connect4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBCFD225C1A7000230560 /* Connect4Tests.swift */; };
 		DA6FBD09225C1A9B00230560 /* GameBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBD08225C1A9B00230560 /* GameBoardViewController.swift */; };
+		DA6FBD0C225C25B800230560 /* GameBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBD0B225C25B800230560 /* GameBoardViewModel.swift */; };
+		DA6FBD10225C261400230560 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBD0F225C261400230560 /* PlayerModel.swift */; };
+		DA6FBD12225C264500230560 /* ChipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBD11225C264500230560 /* ChipModel.swift */; };
+		DA6FBD14225C277E00230560 /* PlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBD13225C277E00230560 /* PlayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,10 @@
 		DA6FBCFD225C1A7000230560 /* Connect4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect4Tests.swift; sourceTree = "<group>"; };
 		DA6FBCFF225C1A7000230560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA6FBD08225C1A9B00230560 /* GameBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardViewController.swift; sourceTree = "<group>"; };
+		DA6FBD0B225C25B800230560 /* GameBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardViewModel.swift; sourceTree = "<group>"; };
+		DA6FBD0F225C261400230560 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		DA6FBD11225C264500230560 /* ChipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipModel.swift; sourceTree = "<group>"; };
+		DA6FBD13225C277E00230560 /* PlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayModel.swift; sourceTree = "<group>"; };
 		F47153C0FE1BCC1A9DF44DFB /* Pods-Connect4Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect4Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connect4Tests/Pods-Connect4Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,11 +117,11 @@
 		DA6FBCE7225C1A6F00230560 /* Connect4 */ = {
 			isa = PBXGroup;
 			children = (
+				DA6FBD0E225C25E500230560 /* Views */,
+				DA6FBD0D225C25DE00230560 /* Models */,
+				DA6FBD0A225C25A700230560 /* ViewModels */,
 				DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */,
-				DA6FBD08225C1A9B00230560 /* GameBoardViewController.swift */,
-				DA6FBCEC225C1A6F00230560 /* Main.storyboard */,
 				DA6FBCEF225C1A7000230560 /* Assets.xcassets */,
-				DA6FBCF1225C1A7000230560 /* LaunchScreen.storyboard */,
 				DA6FBCF4225C1A7000230560 /* Info.plist */,
 			);
 			path = Connect4;
@@ -126,6 +134,34 @@
 				DA6FBCFF225C1A7000230560 /* Info.plist */,
 			);
 			path = Connect4Tests;
+			sourceTree = "<group>";
+		};
+		DA6FBD0A225C25A700230560 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DA6FBD0B225C25B800230560 /* GameBoardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DA6FBD0D225C25DE00230560 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA6FBD0F225C261400230560 /* PlayerModel.swift */,
+				DA6FBD11225C264500230560 /* ChipModel.swift */,
+				DA6FBD13225C277E00230560 /* PlayModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA6FBD0E225C25E500230560 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA6FBCEC225C1A6F00230560 /* Main.storyboard */,
+				DA6FBCF1225C1A7000230560 /* LaunchScreen.storyboard */,
+				DA6FBD08225C1A9B00230560 /* GameBoardViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +350,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA6FBCE9225C1A6F00230560 /* AppDelegate.swift in Sources */,
+				DA6FBD0C225C25B800230560 /* GameBoardViewModel.swift in Sources */,
+				DA6FBD12225C264500230560 /* ChipModel.swift in Sources */,
+				DA6FBD14225C277E00230560 /* PlayModel.swift in Sources */,
+				DA6FBD10225C261400230560 /* PlayerModel.swift in Sources */,
 				DA6FBD09225C1A9B00230560 /* GameBoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
