@@ -12,6 +12,7 @@ target 'Connect4' do
   pod 'SnapKit'
   pod 'Then'
   pod 'Alamofire'
+  pod 'RxGesture'
 
   target 'Connect4Tests' do
     inherit! :search_paths

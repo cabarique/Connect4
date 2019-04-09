@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 class GameBoardViewController: UIViewController {
     
@@ -33,5 +34,48 @@ class GameBoardViewController: UIViewController {
             .player2NameObservable
             .bind(to: player2Label.rx.text)
             .disposed(by: disposeBag)
+        
+        player1Label.rx
+            .tapGesture()
+            .when(.recognized)
+            .flatMap{ _ in self.showNewPlayerDialog()}
+            .subscribe(onNext: { name in
+                self.viewModel.newPlayer(name, chip: .red)
+            })
+            .disposed(by: disposeBag)
+        
+        player2Label.rx
+            .tapGesture()
+            .when(.recognized)
+            .flatMap{ _ in self.showNewPlayerDialog()}
+            .subscribe(onNext: { name in
+                self.viewModel.newPlayer(name, chip: .yellow)
+            })
+            .disposed(by: disposeBag)
+            
+    }
+    
+    private func showNewPlayerDialog() -> Observable<String> {
+        let response = PublishSubject<String>()
+        let alert = UIAlertController(title: "What's your name?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            response.onError(RxError.noElements)
+        }))
+        
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Input your name here..."
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+            if let name = alert.textFields?.first?.text {
+                response.onNext(name)
+                response.onCompleted()
+            }
+        }))
+        
+        self.present(alert, animated: true)
+        
+        return response
     }
 }

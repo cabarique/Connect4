@@ -3,6 +3,9 @@ PODS:
   - RxAtomic (4.4.1)
   - RxCocoa (4.4.1):
     - RxSwift (~> 4.0)
+  - RxGesture (2.1.0):
+    - RxCocoa (~> 4.4.0)
+    - RxSwift (~> 4.4.0)
   - RxSwift (4.4.1):
     - RxAtomic (~> 4.4)
   - RxSwiftExt (3.4.0):
@@ -19,6 +22,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - RxCocoa
+  - RxGesture
   - RxSwift
   - RxSwiftExt
   - SnapKit
@@ -29,6 +33,7 @@ SPEC REPOS:
     - Alamofire
     - RxAtomic
     - RxCocoa
+    - RxGesture
     - RxSwift
     - RxSwiftExt
     - SnapKit
@@ -38,11 +43,12 @@ SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
+  RxGesture: 7f6dfb45dbde06e618c24442d38493e3144f2c95
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
   RxSwiftExt: 01f8ecbeeb355698e9c75365ebe908b00dacf45d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: 703d92cf60d96a60660ec51bf581a6aa5a6692e6
+PODFILE CHECKSUM: 2d6b5b1e33ae988dca9abef20ce96cfb83f43ab6
 
 COCOAPODS: 1.5.3
