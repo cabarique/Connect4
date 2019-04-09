@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		DA6FBCE9225C1A6F00230560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */; };
-		DA6FBCEB225C1A6F00230560 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBCEA225C1A6F00230560 /* ViewController.swift */; };
 		DA6FBCEE225C1A6F00230560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6FBCEC225C1A6F00230560 /* Main.storyboard */; };
 		DA6FBCF0225C1A7000230560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6FBCEF225C1A7000230560 /* Assets.xcassets */; };
 		DA6FBCF3225C1A7000230560 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6FBCF1225C1A7000230560 /* LaunchScreen.storyboard */; };
 		DA6FBCFE225C1A7000230560 /* Connect4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBCFD225C1A7000230560 /* Connect4Tests.swift */; };
+		DA6FBD09225C1A9B00230560 /* GameBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBD08225C1A9B00230560 /* GameBoardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +28,6 @@
 /* Begin PBXFileReference section */
 		DA6FBCE5225C1A6F00230560 /* Connect4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Connect4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA6FBCEA225C1A6F00230560 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DA6FBCED225C1A6F00230560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA6FBCEF225C1A7000230560 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA6FBCF2225C1A7000230560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +35,7 @@
 		DA6FBCF9225C1A7000230560 /* Connect4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Connect4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6FBCFD225C1A7000230560 /* Connect4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect4Tests.swift; sourceTree = "<group>"; };
 		DA6FBCFF225C1A7000230560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA6FBD08225C1A9B00230560 /* GameBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */,
-				DA6FBCEA225C1A6F00230560 /* ViewController.swift */,
+				DA6FBD08225C1A9B00230560 /* GameBoardViewController.swift */,
 				DA6FBCEC225C1A6F00230560 /* Main.storyboard */,
 				DA6FBCEF225C1A7000230560 /* Assets.xcassets */,
 				DA6FBCF1225C1A7000230560 /* LaunchScreen.storyboard */,
@@ -197,8 +197,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA6FBCEB225C1A6F00230560 /* ViewController.swift in Sources */,
 				DA6FBCE9225C1A6F00230560 /* AppDelegate.swift in Sources */,
+				DA6FBD09225C1A9B00230560 /* GameBoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
