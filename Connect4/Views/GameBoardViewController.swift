@@ -13,14 +13,21 @@ import RxGesture
 
 class GameBoardViewController: UIViewController {
     
+    enum Config {
+        static let collectionViewCellId = SlotViewCell.cellReuseIdentifier()
+    }
+    
     private let disposeBag = DisposeBag()
     let viewModel = GameBoardViewModel()
     
     //MARK: IBOutlets
+    @IBOutlet weak var boardCollectionView: UICollectionView!
+    @IBOutlet weak var boardContainerView: UIView!
     @IBOutlet weak var player1Label: UILabel!
     @IBOutlet weak var player2Label: UILabel!
     
     override func viewDidLoad() {
+        boardCollectionView.register(SlotViewCell.self, forCellWithReuseIdentifier: SlotViewCell.cellReuseIdentifier())
         rxBind()
     }
     
@@ -80,4 +87,30 @@ class GameBoardViewController: UIViewController {
         
         return response
     }
+}
+
+extension GameBoardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return GameBoardViewModel.boardHeight
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return GameBoardViewModel.boardWidth
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Config.collectionViewCellId, for: indexPath) as! SlotViewCell
+        
+        let chip = viewModel.gameBoard[indexPath.section][indexPath.row]
+        cell.state = chip.type
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width / 7
+        return CGSize(width: width, height: width)
+    }
+    
 }

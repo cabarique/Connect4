@@ -17,6 +17,11 @@ protocol GameBoardViewModelOutput {
 class GameBoardViewModel {
     let disposeBag = DisposeBag()
     
+    static let boardWidth = 7
+    static let boardHeight = 6
+    
+    let gameBoard: [[ChipModel]] =  Array(repeating: Array(repeating: ChipModel(type: .blank), count: boardWidth), count: boardHeight)
+    
     //Subjects
     fileprivate let player1NameSubject = ReplaySubject<String>.create(bufferSize: 1)
     fileprivate let player2NameSubject = ReplaySubject<String>.create(bufferSize: 1)
@@ -51,6 +56,8 @@ class GameBoardViewModel {
             player1Subject.onNext(newPlayer)
         case .yellow:
             player2Subject.onNext(newPlayer)
+        default:
+            break
         }
     }
 }

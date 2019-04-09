@@ -11,6 +11,7 @@ import Foundation
 enum ChipType {
     case red
     case yellow
+    case blank
 }
 
 protocol Chip {

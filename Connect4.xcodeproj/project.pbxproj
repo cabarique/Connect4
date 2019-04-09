@@ -19,6 +19,7 @@
 		DA6FBD10225C261400230560 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBD0F225C261400230560 /* PlayerModel.swift */; };
 		DA6FBD12225C264500230560 /* ChipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBD11225C264500230560 /* ChipModel.swift */; };
 		DA6FBD14225C277E00230560 /* PlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBD13225C277E00230560 /* PlayModel.swift */; };
+		DAAB05E8225C3A33006BDD80 /* SlotViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAB05E7225C3A33006BDD80 /* SlotViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		DA6FBD0F225C261400230560 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		DA6FBD11225C264500230560 /* ChipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipModel.swift; sourceTree = "<group>"; };
 		DA6FBD13225C277E00230560 /* PlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayModel.swift; sourceTree = "<group>"; };
+		DAAB05E7225C3A33006BDD80 /* SlotViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotViewCell.swift; sourceTree = "<group>"; };
 		F47153C0FE1BCC1A9DF44DFB /* Pods-Connect4Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect4Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connect4Tests/Pods-Connect4Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +162,7 @@
 				DA6FBCEC225C1A6F00230560 /* Main.storyboard */,
 				DA6FBCF1225C1A7000230560 /* LaunchScreen.storyboard */,
 				DA6FBD08225C1A9B00230560 /* GameBoardViewController.swift */,
+				DAAB05E7225C3A33006BDD80 /* SlotViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				DA6FBCE9225C1A6F00230560 /* AppDelegate.swift in Sources */,
 				DA6FBD0C225C25B800230560 /* GameBoardViewModel.swift in Sources */,
 				DA6FBD12225C264500230560 /* ChipModel.swift in Sources */,
+				DAAB05E8225C3A33006BDD80 /* SlotViewCell.swift in Sources */,
 				DA6FBD14225C277E00230560 /* PlayModel.swift in Sources */,
 				DA6FBD10225C261400230560 /* PlayerModel.swift in Sources */,
 				DA6FBD09225C1A9B00230560 /* GameBoardViewController.swift in Sources */,
