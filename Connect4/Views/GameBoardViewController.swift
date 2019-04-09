@@ -27,11 +27,13 @@ class GameBoardViewController: UIViewController {
     private func rxBind(){
         viewModel
             .player1NameObservable
+            .observeOn(MainScheduler.instance)
             .bind(to: player1Label.rx.text)
             .disposed(by: disposeBag)
         
         viewModel
             .player2NameObservable
+            .observeOn(MainScheduler.instance)
             .bind(to: player2Label.rx.text)
             .disposed(by: disposeBag)
         
