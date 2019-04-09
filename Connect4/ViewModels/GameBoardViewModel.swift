@@ -22,7 +22,7 @@ class GameBoardViewModel {
     static let boardWidth = 7
     static let boardHeight = 6
     
-    let gameBoard: [[ChipModel]] =  Array(repeating: Array(repeating: ChipModel(type: .blank), count: boardWidth), count: boardHeight)
+    var gameBoard: [[Chip]] =  Array(repeating: Array(repeating: ChipModel(type: .blank), count: boardWidth), count: boardHeight)
     
     //Subjects
     fileprivate let player1NameSubject = ReplaySubject<String>.create(bufferSize: 1)
