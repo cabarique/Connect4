@@ -8,10 +8,12 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol GameBoardViewModelOutput {
     var player1NameObservable: Observable<String> { get }
     var player2NameObservable: Observable<String> { get }
+    var playerTurn: BehaviorSubject<Player> { get }
 }
 
 class GameBoardViewModel {
@@ -27,11 +29,13 @@ class GameBoardViewModel {
     fileprivate let player2NameSubject = ReplaySubject<String>.create(bufferSize: 1)
     fileprivate let player1Subject = ReplaySubject<Player>.create(bufferSize: 1)
     fileprivate let player2Subject = ReplaySubject<Player>.create(bufferSize: 1)
+    var playerTurn: BehaviorSubject<Player>
     
     init() {
         //setup player 1
         let player1 = PlayerModel(name: "Player 1", score: 0, chip: ChipModel(type: .red))
         player1Subject.onNext(player1)
+        playerTurn = BehaviorSubject(value: player1)
         
         //setup player 2
         let player2 = PlayerModel(name: "Player 2", score: 0, chip: ChipModel(type: .yellow))
@@ -63,6 +67,8 @@ class GameBoardViewModel {
 }
 
 extension GameBoardViewModel: GameBoardViewModelOutput {
+    
+    
     var player1NameObservable: Observable<String> {
         return player1NameSubject.asObservable()
     }

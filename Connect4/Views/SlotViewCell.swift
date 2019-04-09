@@ -39,7 +39,7 @@ class SlotViewCell: UICollectionViewCell {
     }
     
     private func setupView(){
-        
+        isUserInteractionEnabled = false
         self.fillLayer = CAShapeLayer().then {
             $0.fillRule = .evenOdd
             $0.fillColor = config.backgroundColor.cgColor
@@ -55,25 +55,12 @@ class SlotViewCell: UICollectionViewCell {
         let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height), cornerRadius: 0)
         let circlePath = UIBezierPath(roundedRect: CGRect(x: config.padding, y: config.padding, width: 2 * radius, height: 2 * radius), cornerRadius: radius)
         if(state != .blank) {
-            self.getFillcolor(state: state).setFill()
+            state.color().setFill()
             circlePath.fill()
         }
         
         path.append(circlePath)
         
         self.fillLayer.path = path.cgPath
-    }
-    
-    private func getFillcolor(state: ChipType) -> UIColor {
-        let fillColor: UIColor
-        switch state {
-        case .blank:
-            fillColor = config.blankChipColor
-        case .yellow:
-            fillColor = config.yellowChipColor
-        case .red:
-            fillColor = config.redChipColor
-        }
-        return fillColor
     }
 }

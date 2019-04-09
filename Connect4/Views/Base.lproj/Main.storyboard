@@ -52,14 +52,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLb-Yl-roL">
                                 <rect key="frame" x="8" y="258.5" width="398" height="389"/>
                                 <subviews>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvJ-vs-lhy" userLabel="boardHeader">
+                                    <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvJ-vs-lhy" userLabel="boardHeader">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="24"/>
                                         <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="et8-ln-lgn"/>
                                         </constraints>
                                     </view>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Mr-rz-Lv1">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Mr-rz-Lv1">
                                         <rect key="frame" x="0.0" y="24" width="398" height="341"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -77,25 +77,33 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="83b-Kz-Ppu"/>
                                         </connections>
                                     </collectionView>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPR-fP-tbF" userLabel="boeardFooter">
+                                    <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPR-fP-tbF" userLabel="boeardFooter">
                                         <rect key="frame" x="0.0" y="365" width="398" height="24"/>
                                         <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="Yec-P3-za3"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSE-qG-gCD">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="389"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="rvJ-vs-lhy" firstAttribute="leading" secondItem="vLb-Yl-roL" secondAttribute="leading" id="0Ic-w7-0fP"/>
+                                    <constraint firstAttribute="bottom" secondItem="SSE-qG-gCD" secondAttribute="bottom" id="1cG-wI-81M"/>
                                     <constraint firstAttribute="trailing" secondItem="1Mr-rz-Lv1" secondAttribute="trailing" id="21F-xz-Ga4"/>
                                     <constraint firstItem="mPR-fP-tbF" firstAttribute="leading" secondItem="vLb-Yl-roL" secondAttribute="leading" id="4Wj-AA-Ghu"/>
+                                    <constraint firstAttribute="trailing" secondItem="SSE-qG-gCD" secondAttribute="trailing" id="7Jl-G8-mfe"/>
+                                    <constraint firstItem="SSE-qG-gCD" firstAttribute="top" secondItem="vLb-Yl-roL" secondAttribute="top" id="Goy-kF-l78"/>
                                     <constraint firstItem="1Mr-rz-Lv1" firstAttribute="bottom" secondItem="mPR-fP-tbF" secondAttribute="top" id="OTR-Rd-2zS"/>
                                     <constraint firstAttribute="trailing" secondItem="rvJ-vs-lhy" secondAttribute="trailing" id="bhz-BM-2g8"/>
                                     <constraint firstItem="rvJ-vs-lhy" firstAttribute="top" secondItem="vLb-Yl-roL" secondAttribute="top" id="k0k-zw-ZdN"/>
                                     <constraint firstAttribute="trailing" secondItem="mPR-fP-tbF" secondAttribute="trailing" id="o2P-6j-Tki"/>
                                     <constraint firstItem="1Mr-rz-Lv1" firstAttribute="top" secondItem="rvJ-vs-lhy" secondAttribute="bottom" id="p3q-CV-bCr"/>
                                     <constraint firstAttribute="bottom" secondItem="mPR-fP-tbF" secondAttribute="bottom" id="qbb-qc-z8h"/>
+                                    <constraint firstItem="SSE-qG-gCD" firstAttribute="leading" secondItem="vLb-Yl-roL" secondAttribute="leading" id="qdP-rS-cZ5"/>
                                     <constraint firstItem="1Mr-rz-Lv1" firstAttribute="leading" secondItem="vLb-Yl-roL" secondAttribute="leading" id="vQY-fk-Vyn"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -120,6 +128,7 @@
                     <connections>
                         <outlet property="boardCollectionView" destination="1Mr-rz-Lv1" id="FMB-wU-Qol"/>
                         <outlet property="boardContainerView" destination="vLb-Yl-roL" id="b5m-1p-ckH"/>
+                        <outlet property="boardGestureView" destination="SSE-qG-gCD" id="kaQ-x6-TQK"/>
                         <outlet property="player1Label" destination="IWt-kz-j48" id="V1E-aX-AVR"/>
                         <outlet property="player2Label" destination="HFc-8R-mV2" id="Akq-Us-6bR"/>
                     </connections>

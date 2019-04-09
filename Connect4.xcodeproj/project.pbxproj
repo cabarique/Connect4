@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4ADA82F65ACF15310C62C51A /* Pods_Connect4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18F544046AD2A6FED68513A /* Pods_Connect4.framework */; };
 		9FEB45BC2C86C9A489E1217A /* Pods_Connect4Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B25394F7E250B9702001DF3 /* Pods_Connect4Tests.framework */; };
+		DA2A8A3D225D0C1C00147BF0 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A8A3C225D0C1C00147BF0 /* ChipView.swift */; };
 		DA6FBCE9225C1A6F00230560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */; };
 		DA6FBCEE225C1A6F00230560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6FBCEC225C1A6F00230560 /* Main.storyboard */; };
 		DA6FBCF0225C1A7000230560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6FBCEF225C1A7000230560 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		433EC1A999A86C766A58E5E3 /* Pods-Connect4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect4.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connect4/Pods-Connect4.release.xcconfig"; sourceTree = "<group>"; };
 		A44872AF6BBD2FA483EECAEC /* Pods-Connect4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect4.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Connect4/Pods-Connect4.debug.xcconfig"; sourceTree = "<group>"; };
 		C18F544046AD2A6FED68513A /* Pods_Connect4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA2A8A3C225D0C1C00147BF0 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
 		DA6FBCE5225C1A6F00230560 /* Connect4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Connect4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA6FBCED225C1A6F00230560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				DA6FBCF1225C1A7000230560 /* LaunchScreen.storyboard */,
 				DA6FBD08225C1A9B00230560 /* GameBoardViewController.swift */,
 				DAAB05E7225C3A33006BDD80 /* SlotViewCell.swift */,
+				DA2A8A3C225D0C1C00147BF0 /* ChipView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA2A8A3D225D0C1C00147BF0 /* ChipView.swift in Sources */,
 				DA6FBCE9225C1A6F00230560 /* AppDelegate.swift in Sources */,
 				DA6FBD0C225C25B800230560 /* GameBoardViewModel.swift in Sources */,
 				DA6FBD12225C264500230560 /* ChipModel.swift in Sources */,

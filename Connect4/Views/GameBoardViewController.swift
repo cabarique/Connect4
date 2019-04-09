@@ -19,15 +19,18 @@ class GameBoardViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     let viewModel = GameBoardViewModel()
+    var chipToPlayView: ChipView?
     
     //MARK: IBOutlets
     @IBOutlet weak var boardCollectionView: UICollectionView!
     @IBOutlet weak var boardContainerView: UIView!
     @IBOutlet weak var player1Label: UILabel!
     @IBOutlet weak var player2Label: UILabel!
+    @IBOutlet weak var boardGestureView: UIView!
     
     override func viewDidLoad() {
         boardCollectionView.register(SlotViewCell.self, forCellWithReuseIdentifier: SlotViewCell.cellReuseIdentifier())
+        boardGestureView.isUserInteractionEnabled = true
         rxBind()
     }
     
@@ -61,7 +64,66 @@ class GameBoardViewController: UIViewController {
                 self.viewModel.newPlayer(name, chip: .yellow)
             })
             .disposed(by: disposeBag)
+        
+        boardGestureView.rx
+            .anyGesture(
+                (.tap(), when: .recognized),
+                (.pan(), when: .began),
+                (.pan(), when: .changed)
+            )
+            .map { gesture -> (column: Int, center: CGPoint) in
+                let location = gesture.location(in: self.boardContainerView)
+                return self.getColumn(location: location, in: self.boardContainerView)
+            }
+            .map { position -> UIView in
+                if(self.chipToPlayView == nil) {
+                    self.chipToPlayView = ChipView(frame: .zero)
+                }
+                
+                self.chipToPlayView!.frame.size = CGSize(width: 40, height: 40)
+                self.chipToPlayView!.center = position.center
+                
+                self.chipToPlayView!.backgroundColor = try! self.viewModel.playerTurn.value().chip.type.color()
+                
+                return self.chipToPlayView!
+            }
+            .subscribe(onNext: { chipView in
+                if chipView.superview == nil {
+                    self.boardContainerView.addSubview(chipView)
+                    self.boardContainerView.sendSubviewToBack(chipView)
+                }
+            })
+            .disposed(by: self.disposeBag)
+        
             
+    }
+    
+    /// gets column location plus center of the Chip
+    private func getColumn(location: CGPoint, in view: UIView) -> (column: Int, center: CGPoint) {
+        let column: Int
+        
+        let yAxis = view.bounds.origin.y
+        let width = view.bounds.width
+        let sectionWidth = width / CGFloat(GameBoardViewModel.boardWidth)
+        let sectionDelta = sectionWidth / 2
+        switch(location.x){
+        case 0..<sectionWidth:
+            column = 0
+        case sectionWidth..<(2*sectionWidth):
+            column = 1
+        case (2*sectionWidth)..<(3*sectionWidth):
+            column = 2
+        case (3*sectionWidth)..<(4*sectionWidth):
+            column = 3
+        case (4*sectionWidth)..<(5*sectionWidth):
+            column = 4
+        case (5*sectionWidth)..<(6*sectionWidth):
+            column = 5
+        default:
+            column = 6
+        }
+        let center: CGPoint = CGPoint(x: (CGFloat(column)*sectionWidth) + sectionDelta, y: yAxis)
+        return (column, center)
     }
     
     private func showNewPlayerDialog() -> Observable<String> {
@@ -104,6 +166,7 @@ extension GameBoardViewController: UICollectionViewDelegate, UICollectionViewDat
         
         let chip = viewModel.gameBoard[indexPath.section][indexPath.row]
         cell.state = chip.type
+        cell.isUserInteractionEnabled = false
         
         return cell
     }
