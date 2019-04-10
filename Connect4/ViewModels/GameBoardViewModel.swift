@@ -67,6 +67,9 @@ class GameBoardViewModel {
     
     func newPlay(_ play: Play) {
         gameBoard[play.row][play.column] = playerTurn.value.chip
+        if validateWin(play: play){
+            print("player \(play.player.name) has won")
+        }
         nextPlayer()
     }
     
@@ -88,6 +91,81 @@ class GameBoardViewModel {
         }else {
             fatalError("player not found")
         }
+    }
+    
+    private func validateWin(play: Play) -> Bool {
+        for row in 0..<GameBoardViewModel.boardHeight {
+            for column in 0..<GameBoardViewModel.boardWidth {
+                let currentPlay = PlayModel(player: play.player, column: column, row: row)
+                if playWon(currentPlay) {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+    
+    private func playWon(_ play: Play) -> Bool{
+        return validateRight4(play) ||
+            validateTop4(play) ||
+            validateTopRight4(play) ||
+            validateBottomRight4(play)
+    }
+    
+    private func validateRight4(_ play: Play) -> Bool {
+        if play.column + 4 > GameBoardViewModel.boardWidth { return false }
+        
+        for i in 0..<4 {
+            if gameBoard[play.row][play.column + i].type != play.player.chip.type {
+                return false
+            }
+        }
+        print("won validateRight4 \(play)")
+        return true
+    }
+    
+    private func validateTop4(_ play: Play) -> Bool {
+        if play.row + 4 > GameBoardViewModel.boardHeight { return false }
+        
+        for i in 0..<4 {
+            if gameBoard[play.row + i][play.column].type != play.player.chip.type {
+                return false
+            }
+        }
+        print("won validateTop4 \(play)")
+        return true
+    }
+    
+    private func validateBottomRight4(_ play: Play) -> Bool {
+        if play.column + 4 > GameBoardViewModel.boardWidth
+            || play.row + 4 > GameBoardViewModel.boardHeight {
+            return false
+        }
+        
+        for i in 0..<4 {
+            if gameBoard[play.row + i][play.column + i].type != play.player.chip.type {
+                return false
+            }
+        }
+        
+        print("won validateBottomRight4 \(play)")
+        return true
+    }
+    
+    private func validateTopRight4(_ play: Play) -> Bool {
+        if play.column + 4 > GameBoardViewModel.boardWidth
+            || play.row - 3 < 0 {
+            return false
+        }
+        
+        for i in 0..<4 {
+            if gameBoard[play.row - i][play.column + i].type != play.player.chip.type {
+                return false
+            }
+        }
+        print("won validateTopRight4 \(play)")
+        return true
     }
 }
 
