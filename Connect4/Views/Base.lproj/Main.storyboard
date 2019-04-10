@@ -112,14 +112,31 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gU-gy-fws">
+                                <rect key="frame" x="16" y="786" width="382" height="60"/>
+                                <color key="backgroundColor" name="C4YellowPepper"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="fN8-Dr-bay"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ljc-YR-p5D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hKn-F4-hw7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="23O-nA-zc3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7gU-gy-fws" secondAttribute="bottom" constant="16" id="4bA-gJ-Fec"/>
                             <constraint firstItem="hKn-F4-hw7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="93c-N4-AM1"/>
                             <constraint firstAttribute="trailing" secondItem="vLb-Yl-roL" secondAttribute="trailing" constant="8" id="E7n-HR-hVo"/>
+                            <constraint firstItem="7gU-gy-fws" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Hvl-4H-Goa"/>
                             <constraint firstItem="vLb-Yl-roL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="M8d-KY-bVd"/>
                             <constraint firstItem="vLb-Yl-roL" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Or6-SZ-cxN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7gU-gy-fws" secondAttribute="trailing" constant="16" id="Vff-ys-E2h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hKn-F4-hw7" secondAttribute="trailing" constant="16" id="lmt-pc-pUb"/>
                             <constraint firstItem="vLb-Yl-roL" firstAttribute="top" secondItem="hKn-F4-hw7" secondAttribute="bottom" constant="60" id="q4r-3h-0mj"/>
                         </constraints>
@@ -163,6 +180,9 @@
         </namedColor>
         <namedColor name="C4Yellow">
             <color red="1" green="0.98400002717971802" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="C4YellowPepper">
+            <color red="0.96100002527236938" green="0.69800001382827759" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

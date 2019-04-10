@@ -35,6 +35,11 @@ class GameBoardViewController: UIViewController {
         rxBind()
     }
     
+    @IBAction func resetGame(_ sender: Any) {
+        self.viewModel.newGame()
+        self.boardCollectionView.reloadData()
+    }
+    
     private func rxBind(){
         viewModel.wonObservable
             .observeOn(MainScheduler.instance)
