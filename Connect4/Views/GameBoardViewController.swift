@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxGesture
+import RxSwiftExt
 
 class GameBoardViewController: UIViewController {
     
@@ -67,7 +68,6 @@ class GameBoardViewController: UIViewController {
         
         boardGestureView.rx
             .anyGesture(
-                (.tap(), when: .recognized),
                 (.pan(), when: .began),
                 (.pan(), when: .changed)
             )
@@ -75,27 +75,67 @@ class GameBoardViewController: UIViewController {
                 let location = gesture.location(in: self.boardContainerView)
                 return self.getColumn(location: location, in: self.boardContainerView)
             }
-            .map { position -> UIView in
-                if(self.chipToPlayView == nil) {
-                    self.chipToPlayView = ChipView(frame: .zero)
-                }
-                
-                self.chipToPlayView!.frame.size = CGSize(width: 40, height: 40)
-                self.chipToPlayView!.center = position.center
-                
-                self.chipToPlayView!.backgroundColor = try! self.viewModel.playerTurn.value().chip.type.color()
-                
-                return self.chipToPlayView!
-            }
-            .subscribe(onNext: { chipView in
-                if chipView.superview == nil {
-                    self.boardContainerView.addSubview(chipView)
-                    self.boardContainerView.sendSubviewToBack(chipView)
-                }
+            .subscribe(onNext: { position in
+                self.createChip(center: position.center)
             })
             .disposed(by: self.disposeBag)
         
-            
+        boardGestureView.rx
+            .anyGesture(
+                (.pan(), when: .ended),
+                (.tap(), when: .recognized)
+            )
+            .do(onNext: { gesture in
+                self.boardGestureView.isUserInteractionEnabled = false
+            })
+            .map { gesture -> (column: Int, center: CGPoint) in
+                let location = gesture.location(in: self.boardContainerView)
+                return self.getColumn(location: location, in: self.boardContainerView)
+            }
+            .delay(0.2, scheduler: MainScheduler.instance)
+            .do(onNext: { position in
+                self.createChip(center: position.center)
+            })
+            .map{ self.viewModel.nextPlay(column: $0.column) }
+            .subscribe(onNext: { play in
+                guard let play = play else {
+                    self.boardGestureView.isUserInteractionEnabled = true
+                    self.chipToPlayView?.removeFromSuperview()
+                    self.chipToPlayView = nil
+                    return
+                }
+                if let cell = self.boardCollectionView.cellForItem(at: IndexPath(item: play.column, section: play.row)) {
+                    guard let chipToPlayView = self.chipToPlayView else { return }
+                    
+                    UIView.animate(withDuration: 0.3, animations: {
+                        chipToPlayView.center = cell.superview!.convert(cell.center, to: chipToPlayView.superview)
+                    }, completion: { _ in
+                        chipToPlayView.removeFromSuperview()
+                        self.chipToPlayView = nil
+                        self.viewModel.newPlay(play)
+                        self.boardGestureView.isUserInteractionEnabled = true
+                        self.boardCollectionView.reloadData()
+                    })
+                }
+            })
+            .disposed(by: disposeBag)
+
+    }
+    
+    private func createChip(center: CGPoint){
+        if(self.chipToPlayView == nil) {
+            self.chipToPlayView = ChipView(frame: .zero)
+        }
+        
+        self.chipToPlayView!.frame.size = CGSize(width: 40, height: 40)
+        self.chipToPlayView!.center = center
+        
+        self.chipToPlayView!.backgroundColor = self.viewModel.playerTurn.value.chip.type.color()
+        
+        if self.chipToPlayView!.superview == nil {
+            self.boardContainerView.addSubview(self.chipToPlayView!)
+            self.boardContainerView.sendSubviewToBack(self.chipToPlayView!)
+        }
     }
     
     /// gets column location plus center of the Chip
