@@ -61,6 +61,9 @@ class GameBoardViewModel {
     /// adds a new player to the game
     func newPlayer(_ name: String, chip: ChipType) {
         let newPlayer = PlayerModel(name: name, score: 0, chip: ChipModel(type: chip))
+        if playerTurn.value.chip.type == chip {
+            playerTurn.accept(newPlayer)
+        }
         switch chip {
         case .red:
             player1Subject.accept(newPlayer)
