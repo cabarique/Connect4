@@ -34,6 +34,15 @@ class GameBoardViewController: UIViewController {
         boardCollectionView.register(SlotViewCell.self, forCellWithReuseIdentifier: SlotViewCell.cellReuseIdentifier())
         boardGestureView.isUserInteractionEnabled = true
         rxBind()
+        
+        let matches = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(matchesTapped))
+        
+        navigationItem.rightBarButtonItem = matches
+        navigationItem.rightBarButtonItem?.tintColor = .white
+    }
+    
+    @objc private func matchesTapped() {
+        performSegue(withIdentifier: "showMatches", sender: nil)
     }
     
     @IBAction func resetGame(_ sender: Any) {
@@ -256,4 +265,10 @@ extension GameBoardViewController: UICollectionViewDelegate, UICollectionViewDat
         return CGSize(width: width, height: width)
     }
     
+}
+
+extension GameBoardViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
 }
