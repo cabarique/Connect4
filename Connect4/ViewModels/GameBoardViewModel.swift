@@ -67,6 +67,11 @@ class GameBoardViewModel {
     
     func newGame(){
         gameBoard =  Array(repeating: Array(repeating: ChipModel(type: .blank), count: GameBoardViewModel.boardWidth), count: GameBoardViewModel.boardHeight)
+        player2Subject.accept(PlayerModel(name: player2Subject.value.name, score: 0, chip: player2Subject.value.chip))
+        
+        player1Subject.accept(PlayerModel(name: player1Subject.value.name, score: 0, chip: player1Subject.value.chip))
+        
+        playerTurn.accept(player1Subject.value)
     }
     
     /// adds a new player to the game
@@ -86,7 +91,8 @@ class GameBoardViewModel {
     }
     
     func newPlay(_ play: Play) {
-        gameBoard[play.row][play.column] = playerTurn.value.chip
+        gameBoard[play.row][play.column] = play.player.chip
+        incrementScore()
         if validateWin(play: play){
             print("player \(play.player.name) has won")
             wonSubject.onNext(play.player)
@@ -111,6 +117,20 @@ class GameBoardViewModel {
             playerTurn.accept(player1Subject.value)
         }else {
             fatalError("player not found")
+        }
+    }
+    
+    private func incrementScore() {
+        if player1Subject.value.isEqual(player: playerTurn.value) {
+            var player = player1Subject.value
+            player.incrementScore()
+            player1Subject.accept(player)
+            playerTurn.accept(player)
+        } else if player2Subject.value.isEqual(player: playerTurn.value) {
+            var player = player2Subject.value
+            player.incrementScore()
+            player2Subject.accept(player)
+            playerTurn.accept(player)
         }
     }
     

@@ -10,10 +10,11 @@ import Foundation
 
 protocol Player {
     var name: String { get }
-    var score: Int { get }
+    var score: Int { set get }
     var chip: Chip { get }
     func isEqual(player: Player) -> Bool
     func toAny() -> Any
+    mutating func incrementScore()
 }
 
 extension Player {
@@ -32,5 +33,9 @@ struct PlayerModel: Player {
     func toAny() -> Any {
         return ["name": name,
                 "score": score]
+    }
+    
+    mutating func incrementScore() {
+        score += 1
     }
 }
