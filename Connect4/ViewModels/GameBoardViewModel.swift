@@ -14,6 +14,7 @@ protocol GameBoardViewModelOutput {
     var player1NameObservable: Observable<String> { get }
     var player2NameObservable: Observable<String> { get }
     var playerTurn: BehaviorRelay<Player> { get }
+    var wonObservable: Observable<Player> { get }
 }
 
 class GameBoardViewModel {
@@ -30,6 +31,7 @@ class GameBoardViewModel {
     fileprivate let player1Subject: BehaviorRelay<Player>
     fileprivate let player2Subject: BehaviorRelay<Player>
     let playerTurn: BehaviorRelay<Player>
+    fileprivate let wonSubject = PublishSubject<Player>()
     
     init() {
         //setup player 1
@@ -52,6 +54,10 @@ class GameBoardViewModel {
             .disposed(by: disposeBag)
     }
     
+    func newGame(){
+        gameBoard =  Array(repeating: Array(repeating: ChipModel(type: .blank), count: GameBoardViewModel.boardWidth), count: GameBoardViewModel.boardHeight)
+    }
+    
     /// adds a new player to the game
     func newPlayer(_ name: String, chip: ChipType) {
         let newPlayer = PlayerModel(name: name, score: 0, chip: ChipModel(type: chip))
@@ -69,6 +75,7 @@ class GameBoardViewModel {
         gameBoard[play.row][play.column] = playerTurn.value.chip
         if validateWin(play: play){
             print("player \(play.player.name) has won")
+            wonSubject.onNext(play.player)
         }
         nextPlayer()
     }
@@ -170,7 +177,9 @@ class GameBoardViewModel {
 }
 
 extension GameBoardViewModel: GameBoardViewModelOutput {
-    
+    var wonObservable: Observable<Player> {
+        return wonSubject.asObservable()
+    }
     
     var player1NameObservable: Observable<String> {
         return player1NameSubject.asObservable()

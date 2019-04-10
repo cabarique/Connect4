@@ -36,6 +36,15 @@ class GameBoardViewController: UIViewController {
     }
     
     private func rxBind(){
+        viewModel.wonObservable
+            .observeOn(MainScheduler.instance)
+            .flatMap{ self.showGameWon(player: $0) }
+            .subscribe(onNext: { _ in
+                self.viewModel.newGame()
+                self.boardCollectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
         viewModel
             .player1NameObservable
             .observeOn(MainScheduler.instance)
@@ -199,6 +208,20 @@ class GameBoardViewController: UIViewController {
         self.present(alert, animated: true)
         
         return response
+    }
+    
+    private func showGameWon(player: Player) -> Observable<Void> {
+        return Observable.create { event -> Disposable in
+            let alert = UIAlertController(title: "Congratulations!", message: "\(player.name) has won", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                event.onNext(())
+                event.onCompleted()
+            }))
+            
+            self.present(alert, animated: true)
+            return Disposables.create()
+        }
     }
 }
 
