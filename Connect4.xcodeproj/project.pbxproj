@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4ADA82F65ACF15310C62C51A /* Pods_Connect4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18F544046AD2A6FED68513A /* Pods_Connect4.framework */; };
 		9FEB45BC2C86C9A489E1217A /* Pods_Connect4Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B25394F7E250B9702001DF3 /* Pods_Connect4Tests.framework */; };
+		DA18DFAA225D93B900067324 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA18DFA9225D93B900067324 /* GoogleService-Info.plist */; };
 		DA2A8A3D225D0C1C00147BF0 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A8A3C225D0C1C00147BF0 /* ChipView.swift */; };
 		DA6FBCE9225C1A6F00230560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */; };
 		DA6FBCEE225C1A6F00230560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6FBCEC225C1A6F00230560 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		433EC1A999A86C766A58E5E3 /* Pods-Connect4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect4.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connect4/Pods-Connect4.release.xcconfig"; sourceTree = "<group>"; };
 		A44872AF6BBD2FA483EECAEC /* Pods-Connect4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect4.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Connect4/Pods-Connect4.debug.xcconfig"; sourceTree = "<group>"; };
 		C18F544046AD2A6FED68513A /* Pods_Connect4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA18DFA9225D93B900067324 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA2A8A3C225D0C1C00147BF0 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
 		DA6FBCE5225C1A6F00230560 /* Connect4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Connect4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		DA6FBCE7225C1A6F00230560 /* Connect4 */ = {
 			isa = PBXGroup;
 			children = (
+				DA18DFA9225D93B900067324 /* GoogleService-Info.plist */,
 				DA6FBD0E225C25E500230560 /* Views */,
 				DA6FBD0D225C25DE00230560 /* Models */,
 				DA6FBD0A225C25A700230560 /* ViewModels */,
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA6FBCF3225C1A7000230560 /* LaunchScreen.storyboard in Resources */,
+				DA18DFAA225D93B900067324 /* GoogleService-Info.plist in Resources */,
 				DA6FBCF0225C1A7000230560 /* Assets.xcassets in Resources */,
 				DA6FBCEE225C1A6F00230560 /* Main.storyboard in Resources */,
 			);
@@ -324,6 +328,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Connect4/Pods-Connect4-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
@@ -331,12 +336,15 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
@@ -344,6 +352,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -534,7 +544,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cabarique.Connect4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cabarique.connect4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -553,7 +563,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cabarique.Connect4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cabarique.connect4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

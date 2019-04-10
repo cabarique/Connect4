@@ -13,7 +13,9 @@ target 'Connect4' do
   pod 'Then'
   pod 'Alamofire'
   pod 'RxGesture'
-
+  pod 'Firebase/Core'
+  pod 'Firebase/Database', :inhibit_warnings => true
+  
   target 'Connect4Tests' do
     inherit! :search_paths
     # Pods for testing
