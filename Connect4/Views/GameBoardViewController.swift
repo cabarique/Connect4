@@ -52,7 +52,8 @@ class GameBoardViewController: UIViewController {
             .tapGesture()
             .when(.recognized)
             .flatMap{ _ in self.showNewPlayerDialog()}
-            .subscribe(onNext: { name in
+            .asDriver(onErrorDriveWith: Driver.never())
+            .drive(onNext: { name in
                 self.viewModel.newPlayer(name, chip: .red)
             })
             .disposed(by: disposeBag)
@@ -61,8 +62,18 @@ class GameBoardViewController: UIViewController {
             .tapGesture()
             .when(.recognized)
             .flatMap{ _ in self.showNewPlayerDialog()}
-            .subscribe(onNext: { name in
+            .asDriver(onErrorDriveWith: Driver.never())
+            .drive(onNext: { name in
                 self.viewModel.newPlayer(name, chip: .yellow)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.playerTurn
+            .asDriver(onErrorDriveWith: Driver.never())
+            .drive(onNext: { player in
+                self.title = "Player: " + player.name
+                let textAttributes = [NSAttributedString.Key.foregroundColor:player.chip.type.color()]
+                self.navigationController?.navigationBar.titleTextAttributes = textAttributes
             })
             .disposed(by: disposeBag)
         
