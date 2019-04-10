@@ -11,6 +11,9 @@
 		9FEB45BC2C86C9A489E1217A /* Pods_Connect4Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B25394F7E250B9702001DF3 /* Pods_Connect4Tests.framework */; };
 		DA18DFAA225D93B900067324 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA18DFA9225D93B900067324 /* GoogleService-Info.plist */; };
 		DA2A8A3D225D0C1C00147BF0 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A8A3C225D0C1C00147BF0 /* ChipView.swift */; };
+		DA43C655225E8E820042F83A /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA43C654225E8E820042F83A /* MatchModel.swift */; };
+		DA43C658225E943E0042F83A /* MatchesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA43C657225E943E0042F83A /* MatchesAPI.swift */; };
+		DA43C65B225E9A7C0042F83A /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA43C65A225E9A7C0042F83A /* Date+extensions.swift */; };
 		DA6FBCE9225C1A6F00230560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */; };
 		DA6FBCEE225C1A6F00230560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6FBCEC225C1A6F00230560 /* Main.storyboard */; };
 		DA6FBCF0225C1A7000230560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6FBCEF225C1A7000230560 /* Assets.xcassets */; };
@@ -42,6 +45,9 @@
 		C18F544046AD2A6FED68513A /* Pods_Connect4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connect4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA18DFA9225D93B900067324 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA2A8A3C225D0C1C00147BF0 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
+		DA43C654225E8E820042F83A /* MatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchModel.swift; sourceTree = "<group>"; };
+		DA43C657225E943E0042F83A /* MatchesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesAPI.swift; sourceTree = "<group>"; };
+		DA43C65A225E9A7C0042F83A /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		DA6FBCE5225C1A6F00230560 /* Connect4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Connect4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6FBCE8225C1A6F00230560 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA6FBCED225C1A6F00230560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +106,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DA43C656225E94120042F83A /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				DA43C657225E943E0042F83A /* MatchesAPI.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		DA43C659225E9A6C0042F83A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DA43C65A225E9A7C0042F83A /* Date+extensions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		DA6FBCDC225C1A6E00230560 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				DA18DFA9225D93B900067324 /* GoogleService-Info.plist */,
+				DA43C659225E9A6C0042F83A /* Common */,
+				DA43C656225E94120042F83A /* Client */,
 				DA6FBD0E225C25E500230560 /* Views */,
 				DA6FBD0D225C25DE00230560 /* Models */,
 				DA6FBD0A225C25A700230560 /* ViewModels */,
@@ -157,6 +181,7 @@
 				DA6FBD0F225C261400230560 /* PlayerModel.swift */,
 				DA6FBD11225C264500230560 /* ChipModel.swift */,
 				DA6FBD13225C277E00230560 /* PlayModel.swift */,
+				DA43C654225E8E820042F83A /* MatchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -368,12 +393,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA2A8A3D225D0C1C00147BF0 /* ChipView.swift in Sources */,
+				DA43C658225E943E0042F83A /* MatchesAPI.swift in Sources */,
 				DA6FBCE9225C1A6F00230560 /* AppDelegate.swift in Sources */,
 				DA6FBD0C225C25B800230560 /* GameBoardViewModel.swift in Sources */,
+				DA43C65B225E9A7C0042F83A /* Date+extensions.swift in Sources */,
 				DA6FBD12225C264500230560 /* ChipModel.swift in Sources */,
 				DAAB05E8225C3A33006BDD80 /* SlotViewCell.swift in Sources */,
 				DA6FBD14225C277E00230560 /* PlayModel.swift in Sources */,
 				DA6FBD10225C261400230560 /* PlayerModel.swift in Sources */,
+				DA43C655225E8E820042F83A /* MatchModel.swift in Sources */,
 				DA6FBD09225C1A9B00230560 /* GameBoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

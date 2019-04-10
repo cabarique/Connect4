@@ -18,6 +18,7 @@ protocol GameBoardViewModelOutput {
 }
 
 class GameBoardViewModel {
+    var api: MatchesAPI?
     let disposeBag = DisposeBag()
     
     static let boardWidth = 7
@@ -52,6 +53,16 @@ class GameBoardViewModel {
             .map{ $0.name}
             .bind(to: player2NameSubject)
             .disposed(by: disposeBag)
+        
+        wonSubject
+            .map{[unowned self] player -> MatchModel in
+                return MatchModel(winner: player.name, red: self.player1Subject.value, yellow: self.player2Subject.value, timeStamp: Date())
+            }
+            .flatMap{ [unowned self] match in
+                self.api!.addMatch(match)
+            }
+            .subscribe()
+            .disposed(by: self.disposeBag)
     }
     
     func newGame(){

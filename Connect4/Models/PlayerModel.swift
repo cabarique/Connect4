@@ -13,6 +13,7 @@ protocol Player {
     var score: Int { get }
     var chip: Chip { get }
     func isEqual(player: Player) -> Bool
+    func toAny() -> Any
 }
 
 extension Player {
@@ -27,4 +28,9 @@ struct PlayerModel: Player {
     var name: String
     var score: Int
     var chip: Chip
+    
+    func toAny() -> Any {
+        return ["name": name,
+                "score": score]
+    }
 }

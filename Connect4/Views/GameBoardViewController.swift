@@ -30,6 +30,7 @@ class GameBoardViewController: UIViewController {
     @IBOutlet weak var boardGestureView: UIView!
     
     override func viewDidLoad() {
+        viewModel.api = MatchesAPIImp()
         boardCollectionView.register(SlotViewCell.self, forCellWithReuseIdentifier: SlotViewCell.cellReuseIdentifier())
         boardGestureView.isUserInteractionEnabled = true
         rxBind()
