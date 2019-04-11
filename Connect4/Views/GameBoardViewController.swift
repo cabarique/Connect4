@@ -62,12 +62,14 @@ class GameBoardViewController: UIViewController {
         
         viewModel
             .player1NameObservable
+            .distinct()
             .observeOn(MainScheduler.instance)
             .bind(to: player1Label.rx.text)
             .disposed(by: disposeBag)
         
         viewModel
             .player2NameObservable
+            .distinct()
             .observeOn(MainScheduler.instance)
             .bind(to: player2Label.rx.text)
             .disposed(by: disposeBag)
@@ -93,6 +95,9 @@ class GameBoardViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.playerTurn
+            .distinctUntilChanged({ (old, new) -> Bool in
+                old.name == new.name
+            })
             .asDriver(onErrorDriveWith: Driver.never())
             .drive(onNext: { player in
                 self.title = "Player: " + player.name
