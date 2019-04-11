@@ -30,6 +30,24 @@ struct PlayerModel: Player {
     var score: Int
     var chip: Chip
     
+    init(name: String, score: Int, chip: Chip) {
+        self.name = name
+        self.score = score
+        self.chip = chip
+    }
+    
+    init?(data: [String: AnyObject], chipColor: ChipType) {
+        guard
+            let name = data["name"] as? String,
+            let score = data["score"] as? Int
+            else {
+                return nil
+        }
+        self.name = name
+        self.score = score
+        self.chip = ChipModel(type: chipColor)
+    }
+    
     func toAny() -> Any {
         return ["name": name,
                 "score": score]

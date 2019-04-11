@@ -29,4 +29,29 @@ struct MatchModel: Match {
                 "yellow": yellow.toAny(),
                 "timeStamp": timeStamp.millisecondsSince1970 ]
     }
+    
+    init(winner: String, red: Player, yellow: Player, timeStamp: Date) {
+        self.winner = winner
+        self.red = red
+        self.yellow = yellow
+        self.timeStamp = timeStamp
+    }
+    
+    init?(data: [String: AnyObject]) {
+        guard
+            let winner = data["winner"] as? String,
+            let redData = data["red"] as? [String: AnyObject],
+            let redPlayer = PlayerModel(data: redData, chipColor: .red),
+            let yellowData = data["yellow"] as? [String: AnyObject],
+            let yellowPlater = PlayerModel(data: yellowData, chipColor: .yellow),
+            let timeStamp = data["timeStamp"] as? Int
+            else {
+                return nil
+        }
+        
+        self.winner = winner
+        self.red = redPlayer
+        self.yellow = yellowPlater
+        self.timeStamp = Date.init(milliseconds: timeStamp)
+    }
 }

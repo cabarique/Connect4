@@ -38,6 +38,18 @@ struct MatchesAPIImp: MatchesAPI {
     }
     
     func getMatches() -> Observable<[Match]> {
-        return Observable.just([])
+        
+        return Observable.create { observer -> Disposable in
+            self.database.observe(DataEventType.value) { (snapshot, something) in
+                if let matchesDictionary = snapshot.value as? [String: [String: AnyObject]] {
+                    let matches = matchesDictionary.compactMap { match in
+                        MatchModel(data: match.value)
+                    }
+                    observer.onNext(matches)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
     }
 }
